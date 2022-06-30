@@ -27,9 +27,9 @@ const Register = () => {
       // const log = await response.user;
       // console.log(log);
       sessionStorage.setItem("Token", await response.user.accessToken);
-      await router.push("/home");
+      router.push("/home");
     } catch (error) {
-      console.log(error);
+      alert(error.message);
     }
   };
   const signUpWithGoogle = async () => {
@@ -42,26 +42,26 @@ const Register = () => {
       console.log(await response.user);
       await router.push("/home");
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
   const signUpWithGithub = async () => {
     try {
       const response = await signInWithPopup(auth, githubProvider);
-      // const log = await response.user;
-      // console.log(log);
+
+      // alert);
       sessionStorage.setItem("Token", await response.user.accessToken);
 
-      console.log(await response.user);
+      alert(await response.user);
       await router.push("/home");
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
   useEffect(() => {
     let token = sessionStorage.getItem("Token");
-    if (token) return router.push("/home");
+    if (token) router.push("/home");
   }, []);
 
   return (
